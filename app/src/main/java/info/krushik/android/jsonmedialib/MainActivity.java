@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btnHitVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new JSONTaskVideo().execute("http://fs152.www.ex.ua/get/e1f2711ed80af4961b98f790b17ecec4/272131896/Video.txt");
+                new JSONTaskVideo().execute("http://fs39.www.ex.ua/get/05e8e8055a529012cdf14000014e70aa/272293084/Video.txt");
             }
         });
 
@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        switch (item.getItemId()) {
 //            case R.id.action_down_video:
-//                new JSONTaskVideo().execute("http://fs152.www.ex.ua/get/e1f2711ed80af4961b98f790b17ecec4/272131896/Video.txt");
+//                new JSONTaskVideo().execute("http://fs39.www.ex.ua/get/05e8e8055a529012cdf14000014e70aa/272293084/Video.txt");
 //                return true;
 //            case R.id.action_down_book:
-//                new JSONTaskBook().execute("http://fs43.www.ex.ua/get/4f456ba3e702de7ab255988235ca7a43/272133377/Book.txt");
+//                new JSONTaskBook().execute("http://fs39.www.ex.ua/get/0d38999e21ef88a122ecbe44f073c052/272293104/Book.txt");
 //                return true;
 //        }
 //        return super.onOptionsItemSelected(item);

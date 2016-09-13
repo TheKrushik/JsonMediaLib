@@ -10,11 +10,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class JSONTaskVideo extends AsyncTask<URL, String, String>{
+public class JSONTaskVideo extends AsyncTask<String, String, String>{
 
 
     @Override
-    protected String doInBackground(URL... params) {
+    protected String doInBackground(String... params) {
         HttpURLConnection connection = null;
         BufferedReader reader = null;
         try {
@@ -33,6 +33,8 @@ public class JSONTaskVideo extends AsyncTask<URL, String, String>{
                 buffer.append(line);
             }
 
+            return buffer.toString();
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -49,6 +51,7 @@ public class JSONTaskVideo extends AsyncTask<URL, String, String>{
                 e.printStackTrace();
             }
         }
+        return null;
     }
 
     @Override
