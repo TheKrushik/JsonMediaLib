@@ -13,11 +13,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class JSONTaskBook extends AsyncTask<String, String, String>{
+import info.krushik.android.jsonmedialib.models.BookModel;
+
+public class JSONTaskBook extends AsyncTask<String, String, List<BookModel>>{
 
     @Override
-    protected String doInBackground(String... params) {
+    protected List<BookModel> doInBackground(String... params) {
         HttpURLConnection connection = null;
         BufferedReader reader = null;
         try {
@@ -37,16 +41,31 @@ public class JSONTaskBook extends AsyncTask<String, String, String>{
             JSONObject parentObject = new JSONObject(finalJson);
             JSONArray parentArray = parentObject.getJSONArray("list");
 
-//            StringBuffer finalBufferedData = new StringBuffer();
+            List<BookModel> bookModelList = new ArrayList<>();
+
             for (int i = 0; i < parentArray.length(); i++) {
                 JSONObject finalObject = parentArray.getJSONObject(i);
+                BookModel bookModel = new BookModel();
+                bookModel.setTitle(finalObject.getString("title"));
+                bookModel.setАuthor(finalObject.getString("аuthor"));
+                bookModel.setAnons(finalObject.getString("anons"));
+                bookModel.setPicture(finalObject.getString("picture"));
 
-                String titleName = finalObject.getString("title");
-                String аuthor = finalObject.getString("аuthor");
-                finalBufferedData.append(titleName + " - " + аuthor + "\n");
+                //внутренний масив Json
+                List<BookModel.Files> filesList = new ArrayList<>();
+                for (int j = 0; j < finalObject.getJSONArray("files").length(); j++) {
+                    JSONObject fileObject = finalObject.getJSONArray("files").getJSONObject(j);
+                    BookModel.Files files = new BookModel.Files();
+                    files.setType(fileObject.getString("type"));
+                    files.setUrl(fileObject.getString("url"));
+                    filesList.add(files);
+                }
+                bookModel.setFilesList(filesList);
+                //добавление финального объекта в список
+                bookModelList.add(bookModel);
             }
 
-            return finalBufferedData.toString();
+            return bookModelList;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -70,8 +89,8 @@ public class JSONTaskBook extends AsyncTask<String, String, String>{
     }
 
     @Override
-    protected void onPostExecute(String result) {
+    protected void onPostExecute(List<BookModel> result) {
         super.onPostExecute(result);
-        MainActivity.tvData.setText(result);
+        // нужно отобразить данные в списке
     }
 }

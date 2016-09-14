@@ -6,7 +6,10 @@ public class VideoModel {
     private String picture; // полная ссылка на обложку, с http
     private String desc; // описание, с тегами
     private String length; // 01:01:01
+    private String dt; // YYYY-MM-DD
     private String video; //полная ссылка с http
+
+
 
     public String getTitle() {
         return title;
@@ -38,6 +41,14 @@ public class VideoModel {
 
     public void setLength(String length) {
         this.length = length;
+    }
+
+    public String getDt() {
+        return dt;
+    }
+
+    public void setDt(String dt) {
+        this.dt = dt;
     }
 
     public String getVideo() {

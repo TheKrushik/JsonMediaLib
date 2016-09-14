@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">JsonMediaLib</string>
-    <string name="action_down_video">Down Video</string>
-    <string name="action_down_book">Down Books</string>
+    <string name="action_refresh_video">Refresh Video</string>
+    <string name="action_refresh_book">Refresh Books</string>
 </resources>

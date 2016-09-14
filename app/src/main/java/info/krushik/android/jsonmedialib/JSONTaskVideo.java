@@ -13,11 +13,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class JSONTaskVideo extends AsyncTask<String, String, String>{
+import info.krushik.android.jsonmedialib.models.VideoModel;
+
+public class JSONTaskVideo extends AsyncTask<String, String, List<VideoModel> >{
 
     @Override
-    protected String doInBackground(String... params) {
+    protected List<VideoModel> doInBackground(String... params) {
         HttpURLConnection connection = null;
         BufferedReader reader = null;
         try {
@@ -37,19 +41,22 @@ public class JSONTaskVideo extends AsyncTask<String, String, String>{
             JSONObject parentObject = new JSONObject(finalJson);
             JSONArray parentArray = parentObject.getJSONArray("list");
 
-//            StringBuffer finalBufferedData = new StringBuffer();
+            List<VideoModel> videoModelList = new ArrayList<>();
+
             for (int i = 0; i < parentArray.length(); i++) {
                 JSONObject finalObject = parentArray.getJSONObject(i);
-                String titleName = finalObject.getString("title");
-                String picture = finalObject.getString("picture");
-                String desc = finalObject.getString("desc");
-                String length = finalObject.getString("length");
-                String dt = finalObject.getString("dt");
-                String video = finalObject.getString("video");
-                finalBufferedData.append(titleName + " - " + picture + "\n");
+                VideoModel videoModel = new VideoModel();
+                videoModel.setTitle(finalObject.getString("title"));
+                videoModel.setPicture(finalObject.getString("picture"));
+                videoModel.setDesc(finalObject.getString("desc"));
+                videoModel.setLength(finalObject.getString("length"));
+                videoModel.setDt(finalObject.getString("dt"));
+                videoModel.setVideo(finalObject.getString("video"));
+
+                videoModelList.add(videoModel);
             }
 
-            return finalBufferedData.toString();
+            return videoModelList;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -73,8 +80,9 @@ public class JSONTaskVideo extends AsyncTask<String, String, String>{
     }
 
     @Override
-    protected void onPostExecute(String result) {
+    protected void onPostExecute(List<VideoModel> result) {
         super.onPostExecute(result);
-        MainActivity.tvData.setText(result);
+
+        // нужно отобразить данные в списке
     }
 }
