@@ -15,14 +15,14 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/ivPictureVideo"
+                android:id="@+id/ivPictureBook"
                 android:layout_width="120dp"
                 android:layout_height="160dp" />
 
             <ProgressBar
-                android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
                 android:layout_gravity="center" />
         </FrameLayout>
 
@@ -33,38 +33,38 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvTitleVideo"
+                android:id="@+id/tvTitleBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="title"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/tvDesc"
+                android:id="@+id/tvAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="desc"
+                android:text="аuthor"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/tvLength"
+                android:id="@+id/tvAnons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="length"
+                android:text="anons"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/tvDt"
+                android:id="@+id/tvFileType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="dt"
+                android:text="file type"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/tvVideoHttp"
+                android:id="@+id/tvFileUrl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="video"
+                android:text="file url"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
     </LinearLayout>
