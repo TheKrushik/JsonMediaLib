@@ -15,11 +15,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnHitVideo"
+        android:onClick="OnClick"
         android:text="Hit Video"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnHitBook"
+        android:onClick="OnClick"
         android:text="Hit Book"/>
 
     <TextView
