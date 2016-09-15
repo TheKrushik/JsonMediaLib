@@ -11,7 +11,7 @@
           "url": "11http://...."
         },
    	    { 
-          "type": "pdf",
+          "type": "epub",
           "url": "12http://...."
         }
       ]
@@ -27,8 +27,8 @@
           "url": "21http://...."
         },
    	    {
-          "type": "pdf",
-          "url": "32http://...."
+          "type": "epub",
+          "url": "22http://...."
         }
       ]
     },
@@ -43,7 +43,7 @@
           "url": "31http://...."
         },
    	    {
-          "type": "pdf",
+          "type": "epub",
           "url": "32http://...."
         }
       ]

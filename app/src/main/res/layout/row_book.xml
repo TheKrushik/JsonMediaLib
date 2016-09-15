@@ -53,19 +53,47 @@
                 android:text="anons"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:id="@+id/tvFileType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="file type"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tvFileUrl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="file url"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                <TextView
+                    android:id="@+id/tvTypePdf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="file type"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/tvUrlPdf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="file url"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvTypeEpub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="file type"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/tvUrlEpub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="file url"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 

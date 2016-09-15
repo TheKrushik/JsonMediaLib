@@ -83,6 +83,7 @@ public class JSONTaskVideo extends AsyncTask<String, String, List<VideoModel> >{
     protected void onPostExecute(List<VideoModel> result) {
         super.onPostExecute(result);
 
+        VideoAdapter adapter = new VideoAdapter();
         // нужно отобразить данные в списке
     }
 }
