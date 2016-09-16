@@ -286,7 +286,6 @@ public class MainActivity extends AppCompatActivity {
                     bookModelList.add(bookModel);
 
                 }
-
                 return bookModelList;
 
             } catch (MalformedURLException e) {
@@ -386,11 +385,13 @@ public class MainActivity extends AppCompatActivity {
 
             StringBuffer stringBuffer = new StringBuffer();
             for (BookModel.Files files : bookModelList.get(position).getFilesList()) {
-                stringBuffer.insert(0, files.getType());
+                stringBuffer.append(files.getType());
+
             }
+            Log.e("MyLog", stringBuffer.toString());
             holder.tvTypePdf.setText(stringBuffer);
 
-//            holder.tvTypePdf.setText(bookModelList.get(position).getFilesList());
+//            holder.tvTypePdf.setText(bookModelList.get(position).getFilesList().get());
 //            holder.tvUrlPdf.setText(bookModelList.get(position).getVideo());
 //            holder.tvTypeEpub.setText(bookModelList.get(position).getVideo());
 //            holder.tvUrlEpub.setText(bookModelList.get(position).getVideo());
