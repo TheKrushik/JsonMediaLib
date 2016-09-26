@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.activity.MainActivity">
+
     <item
-        android:id="@+id/action_refresh_video"
-        android:orderInCategory="100"
-        android:title="@string/action_refresh_video"
-        app:showAsAction="never" />
+        android:id="@+id/refreshVideo"
+        android:icon="@drawable/ic_videocam_white_24dp"
+        android:title="@string/refresh"
+        app:showAsAction="always" />
     <item
-        android:id="@+id/action_refresh_book"
-        android:orderInCategory="101"
-        android:title="@string/action_refresh_book"
-        app:showAsAction="never" />
+        android:id="@+id/refreshBook"
+        android:icon="@drawable/ic_import_contacts_white_24dp"
+        android:title="@string/refresh"
+        app:showAsAction="always" />
 
 </menu>

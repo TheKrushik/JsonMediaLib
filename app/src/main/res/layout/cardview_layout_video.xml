@@ -23,42 +23,42 @@
                 android:id="@+id/tvTitleVideo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="title"
+                android:text="@string/title"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/tvPictureVideo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="picture"
+                android:text="@string/picture"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/tvDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="desc"
+                android:text="@string/desc"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/tvLength"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="length"
+                android:text="@string/length"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/tvDt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="dt"
+                android:text="@string/dt"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/tvVideoHttp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="video"
+                android:text="@string/video"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 

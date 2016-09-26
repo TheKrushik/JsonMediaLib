@@ -1,16 +1,12 @@
 <resources>
     <string name="app_name">JsonMediaLib</string>
-    <string name="action_refresh_video">Refresh Video</string>
-    <string name="action_refresh_book">Refresh Books</string>
 
-    <string name="get_price">получить цены</string>
-    <string name="registration_bonus">Бонус</string>
-    <string name="messenger_name">Приложение</string>
-    <string name="connection_fee">Плата за соединение</string>
-    <string name="sms_price">Цена СМС</string>
-    <string name="dt">Рейтинг</string>
-    <string name="call_price">Цена звонка</string>
-    <string name="number_of_comments">Количество коментариев</string>
-    <string name="google_store_link">Google Play</string>
-    <string name="is_mobile">Мобильный</string>
+    <string name="refresh">Refresh</string>
+    <string name="title">title</string>
+    <string name="picture">picture</string>
+    <string name="desc">desc</string>
+    <string name="length">length</string>
+    <string name="dt">dt</string>
+    <string name="video">video</string>
+
 </resources>
