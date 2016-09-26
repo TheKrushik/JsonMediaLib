@@ -1,15 +1,28 @@
-package info.krushik.android.jsonmedialib.models;
-
-public class VideoModel {
-
-    private String title; // название
-    private String picture; // полная ссылка на обложку, с http
-    private String desc; // описание, с тегами
-    private String length; // 01:01:01
-    private String dt; // YYYY-MM-DD
-    private String video; //полная ссылка с http
+package info.krushik.android.jsonmedialib.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
+
+public class Video {
+
+    @SerializedName("title")
+    private String title;
+
+    @SerializedName("picture")
+    private String picture;
+
+    @SerializedName("desc")
+    private String desc;
+
+    @SerializedName("length")
+    private String length;
+
+    @SerializedName("dt")
+    private String dt;
+
+    @SerializedName("video")
+    private String video;
 
     public String getTitle() {
         return title;
@@ -58,4 +71,5 @@ public class VideoModel {
     public void setVideo(String video) {
         this.video = video;
     }
+
 }
