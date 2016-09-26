@@ -23,14 +23,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     @Override
     public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_layout_video, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_video, parent, false);
         return new VideoViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(VideoViewHolder holder, int position) {
         Video rate = videoList.get(position);
-        holder.registrationBonus.setText(rate.getTitle());
+        holder.tvTitleVideo.setText(rate.getTitle());
         holder.tvPictureVideo.setText(rate.getPicture());
         holder.tvDesc.setText(rate.getDesc());
         holder.tvLength.setText(rate.getLength());
@@ -45,7 +45,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     public class VideoViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView registrationBonus;
+        public TextView tvTitleVideo;
         public TextView tvPictureVideo;
         public TextView tvDesc;
         public TextView tvLength;
@@ -54,7 +54,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         public VideoViewHolder(View view) {
             super(view);
-            registrationBonus = (TextView) view.findViewById(R.id.tvTitleVideo);
+            tvTitleVideo = (TextView) view.findViewById(R.id.tvTitleVideo);
             tvPictureVideo = (TextView) view.findViewById(R.id.tvPictureVideo);
             tvDesc = (TextView) view.findViewById(R.id.tvDesc);
             tvLength = (TextView) view.findViewById(R.id.tvLength);
