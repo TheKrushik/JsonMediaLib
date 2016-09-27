@@ -12,7 +12,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import info.krushik.android.jsonmedialib.R;
+import info.krushik.android.jsonmedialib.model.BookList;
 import info.krushik.android.jsonmedialib.model.VideoList;
+import info.krushik.android.jsonmedialib.view.adapter.BookAdapter;
 import info.krushik.android.jsonmedialib.view.adapter.VideoAdapter;
 import info.krushik.android.jsonmedialib.retrofit.RetrofitService;
 import retrofit2.Call;
@@ -25,8 +27,11 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
     private ProgressBar progressBar;
     private VideoAdapter videoAdapter;
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerViewVideo;
     private VideoList videoList;
+    private BookAdapter bookAdapter;
+    private RecyclerView recyclerViewBook;
+    private BookList bookList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,44 +40,83 @@ public class MainActivity extends AppCompatActivity {
         context = this;
         initFields();
         if (savedInstanceState != null && !savedInstanceState.isEmpty()) {
+
             videoList = (VideoList) savedInstanceState.get(SAVE_INSTANCE);
-            setItemsToList(videoList);
+            setItemsToListVideo(videoList);
+
+//            bookList = (BookList) savedInstanceState.get(SAVE_INSTANCE);
+//            setItemsToListBook(bookList);
         }
     }
 
     public void getVideo(View view) {
 
         progressBar.setVisibility(ProgressBar.VISIBLE);
-        recyclerView.setVisibility(ProgressBar.GONE);
+        recyclerViewVideo.setVisibility(ProgressBar.GONE);
 
 
         RetrofitService.getApi().getListVideo().enqueue(new Callback<VideoList>() {
             @Override
             public void onResponse(Call<VideoList> call, Response<VideoList> response) {
                 videoList = response.body();
-                setItemsToList(response.body());
+                setItemsToListVideo(response.body());
                 hideProgressBar();
             }
 
             @Override
             public void onFailure(Call<VideoList> call, Throwable t) {
                 if (videoList != null) {
-                    setItemsToList(videoList);
+                    setItemsToListVideo(videoList);
                 }
                 hideProgressBar();
             }
         });
     }
 
-    private void setItemsToList(VideoList currentVideo) {
-        if (!recyclerView.isShown()) {
-            recyclerView.setVisibility(View.VISIBLE);
+    public void getBook(View view) {
+
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+        recyclerViewBook.setVisibility(ProgressBar.GONE);
+
+
+        RetrofitService.getApi().getListBook().enqueue(new Callback<BookList>() {
+            @Override
+            public void onResponse(Call<BookList> call, Response<BookList> response) {
+                bookList = response.body();
+                setItemsToListBook(response.body());
+                hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(Call<BookList> call, Throwable t) {
+                if (bookList != null) {
+                    setItemsToListBook(bookList);
+                }
+                hideProgressBar();
+            }
+        });
+    }
+
+    private void setItemsToListVideo(VideoList currentVideo) {
+        if (!recyclerViewVideo.isShown()) {
+            recyclerViewVideo.setVisibility(View.VISIBLE);
         }
         videoAdapter = new VideoAdapter(currentVideo.getList());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(videoAdapter);
+        recyclerViewVideo.setLayoutManager(mLayoutManager);
+        recyclerViewVideo.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewVideo.setAdapter(videoAdapter);
+    }
+
+    private void setItemsToListBook(BookList currentBook) {
+        if (!recyclerViewBook.isShown()) {
+            recyclerViewBook.setVisibility(View.VISIBLE);
+        }
+        bookAdapter = new BookAdapter(currentBook.getList());
+        RecyclerView.LayoutManager mLayoutManagerB = new LinearLayoutManager(context);
+        recyclerViewBook.setLayoutManager(mLayoutManagerB);
+        recyclerViewBook.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewBook.setAdapter(bookAdapter);
     }
 
     @Override
@@ -80,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
         if (videoList != null) {
             outState.putParcelable(SAVE_INSTANCE, videoList);
         }
+//        if (bookList != null) {
+//            outState.putParcelable(SAVE_INSTANCE, bookList);
+//        }
     }
 
     private void hideProgressBar() {
@@ -88,7 +135,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFields() {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerViewVideo = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerViewBook = (RecyclerView) findViewById(R.id.recycler_view);
     }
 
     @Override
@@ -101,10 +149,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.refreshVideo:
-                getVideo(recyclerView);
+//                bookList = null;
+                getVideo(recyclerViewVideo);
                 return true;
             case R.id.refreshBook:
-
+//                videoList = null;
+                getBook(recyclerViewBook);
                 return true;
         }
         return super.onOptionsItemSelected(item);

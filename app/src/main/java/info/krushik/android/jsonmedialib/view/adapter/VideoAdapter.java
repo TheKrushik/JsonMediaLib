@@ -29,13 +29,13 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     @Override
     public void onBindViewHolder(VideoViewHolder holder, int position) {
-        Video rate = videoList.get(position);
-        holder.tvTitleVideo.setText(rate.getTitle());
-        holder.tvPictureVideo.setText(rate.getPicture());
-        holder.tvDesc.setText(rate.getDesc());
-        holder.tvLength.setText(rate.getLength());
-        holder.tvDt.setText(rate.getDt());
-        holder.tvVideoHttp.setText(rate.getVideo());
+        Video video = videoList.get(position);
+        holder.tvTitleVideo.setText(video.getTitle());
+        holder.tvPictureVideo.setText(video.getPicture());
+        holder.tvDesc.setText(video.getDesc());
+        holder.tvLength.setText(video.getLength());
+        holder.tvDt.setText(video.getDt());
+        holder.tvVideoHttp.setText(video.getVideo());
     }
 
     @Override
@@ -43,16 +43,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         return videoList.size();
     }
 
-    public class VideoViewHolder extends RecyclerView.ViewHolder {
+    class VideoViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView tvTitleVideo;
-        public TextView tvPictureVideo;
-        public TextView tvDesc;
-        public TextView tvLength;
-        public TextView tvDt;
-        public TextView tvVideoHttp;
+        TextView tvTitleVideo;
+        TextView tvPictureVideo;
+        TextView tvDesc;
+        TextView tvLength;
+        TextView tvDt;
+        TextView tvVideoHttp;
 
-        public VideoViewHolder(View view) {
+        VideoViewHolder(View view) {
             super(view);
             tvTitleVideo = (TextView) view.findViewById(R.id.tvTitleVideo);
             tvPictureVideo = (TextView) view.findViewById(R.id.tvPictureVideo);

@@ -1,30 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="4dp">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewBook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/ivPictureBook"
-                android:layout_width="120dp"
-                android:layout_height="160dp" />
-
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar"
-                android:layout_gravity="center" />
-        </FrameLayout>
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardElevation="2dp"
+        card_view:cardUseCompatPadding="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,21 +23,28 @@
                 android:id="@+id/tvTitleBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="title"
+                android:text="@string/title"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/tvAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="аuthor"
+                android:text="@string/author"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/tvAnons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="anons"
+                android:text="@string/anons"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/tvPictureBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/picture"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <LinearLayout
@@ -62,14 +56,14 @@
                     android:id="@+id/tvTypePdf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="file type"
+                    android:text="@string/file_type"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <TextView
                     android:id="@+id/tvUrlPdf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="file url"
+                    android:text="@string/file_url"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_marginLeft="4dp" />
             </LinearLayout>
@@ -82,19 +76,19 @@
                     android:id="@+id/tvTypeEpub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="file type"
+                    android:text="@string/file_type"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <TextView
                     android:id="@+id/tvUrlEpub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="file url"
+                    android:text="@string/file_url"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_marginLeft="4dp" />
             </LinearLayout>
-
         </LinearLayout>
-    </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
