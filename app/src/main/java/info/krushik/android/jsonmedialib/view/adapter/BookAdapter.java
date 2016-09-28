@@ -37,21 +37,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         holder.tvAuthor.setText(book.getAuthor());
         holder.tvAnons.setText(book.getAnons());
         holder.tvPictureBook.setText(book.getPicture());
-
-        int i = 0;
-        for (Book.BookFiles bookFiles : book.getFiles()) {
-            holder.tvTypePdf.setText(bookFiles.getType());
-            holder.tvUrlEpub.setText(bookFiles.getUrl());
-            Log.i("LOG", (i++) + " = " + bookFiles.getType());
-            Log.i("LOG", bookFiles.getUrl());
-        }
-
-
-//        Book.BookFiles bookFiles = bookFilesList.getFiles();
-//        holder.tvTypePdf.setText(bookFiles.getType());
-//        holder.tvUrlPdf.setText(bookFiles.getUrl());
-//        holder.tvTypeEpub.setText(bookFiles.getType());
-//        holder.tvUrlEpub.setText(bookFiles.getUrl());
+        holder.tvUrlPdf.setText(book.getFileByType("pdf"));
+        holder.tvUrlEpub.setText(book.getFileByType("epub"));
     }
 
     @Override
@@ -60,14 +47,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     }
 
     class BookViewHolder extends RecyclerView.ViewHolder {
-
         TextView tvTitleBook;
         TextView tvAuthor;
         TextView tvAnons;
         TextView tvPictureBook;
-        TextView tvTypePdf;
         TextView tvUrlPdf;
-        TextView tvTypeEpub;
         TextView tvUrlEpub;
 
         BookViewHolder(View view) {
@@ -76,9 +60,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             tvAuthor = (TextView) view.findViewById(R.id.tvAuthor);
             tvAnons = (TextView) view.findViewById(R.id.tvAnons);
             tvPictureBook = (TextView) view.findViewById(R.id.tvPictureBook);
-            tvTypePdf = (TextView) view.findViewById(R.id.tvTypePdf);
             tvUrlPdf = (TextView) view.findViewById(R.id.tvUrlPdf);
-            tvTypeEpub = (TextView) view.findViewById(R.id.tvTypeEpub);
             tvUrlEpub = (TextView) view.findViewById(R.id.tvUrlEpub);
         }
     }

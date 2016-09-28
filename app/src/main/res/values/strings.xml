@@ -10,7 +10,6 @@
     <string name="video">video</string>
     <string name="author">author</string>
     <string name="anons">anons</string>
-    <string name="file_type">file type</string>
     <string name="file_url">file url</string>
 
 </resources>

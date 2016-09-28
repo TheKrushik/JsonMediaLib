@@ -2,7 +2,6 @@ package info.krushik.android.jsonmedialib.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
@@ -20,7 +19,16 @@ public class Book {
     private String picture;
 
     @SerializedName("files")
-    private List<BookFiles> files;// = new ArrayList<>();
+    private List<BookFiles> files;
+
+    public String getFileByType(String type) {
+        for (Book.BookFiles bookFiles : files) {
+            if (type.equals(bookFiles.getType())) {
+                return bookFiles.getUrl();
+            }
+        }
+        return "";
+    }
 
     public String getTitle() {
         return title;
