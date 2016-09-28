@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import info.krushik.android.jsonmedialib.R;
 import info.krushik.android.jsonmedialib.model.Book;
-import info.krushik.android.jsonmedialib.model.Video;
 
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
@@ -18,7 +18,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     private List<Book> bookList;
     private List<Book.BookFiles> bookFilesList;
 
-//    public BookAdapter(List<Book> bookList, List<Book.BookFiles> bookFilesList) {
+//    public BookAdapter(List<Book> bookList, ArrayList<Book.BookFiles> bookFilesList) {
 //        this.bookList = bookList;
 //        this.bookFilesList = bookFilesList;
 //    }
@@ -39,11 +39,21 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     @Override
     public void onBindViewHolder(BookViewHolder holder, int position) {
         Book book = bookList.get(position);
-//        Book.BookFiles bookFiles = bookFilesList.get(position);
+
         holder.tvTitleBook.setText(book.getTitle());
         holder.tvAuthor.setText(book.getAuthor());
         holder.tvAnons.setText(book.getAnons());
         holder.tvPictureBook.setText(book.getPicture());
+
+        StringBuffer stringBuffer = new StringBuffer();
+            for (Book.BookFiles bookFiles : book.getFiles()) {
+                stringBuffer.append(bookFiles.getType() + " ");
+            }
+
+            holder.tvTypePdf.setText(stringBuffer);
+
+//        holder.tvTypePdf.setText(book.getFiles().);
+//        Book.BookFiles bookFiles = bookFilesList.getFiles();
 //        holder.tvTypePdf.setText(bookFiles.getType());
 //        holder.tvUrlPdf.setText(bookFiles.getUrl());
 //        holder.tvTypeEpub.setText(bookFiles.getType());

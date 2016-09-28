@@ -20,7 +20,7 @@ public class Book {
     private String picture;
 
     @SerializedName("files")
-    private List<BookFiles> files = new ArrayList<>();
+    private List<BookFiles> files;// = new ArrayList<>();
 
     public String getTitle() {
         return title;
@@ -62,7 +62,7 @@ public class Book {
         this.files = files;
     }
 
-    public class BookFiles {
+    public static class BookFiles {
 
         @SerializedName("type")
         private String type;
@@ -85,5 +85,7 @@ public class Book {
         public void setUrl(String url) {
             this.url = url;
         }
+
+
     }
 }
