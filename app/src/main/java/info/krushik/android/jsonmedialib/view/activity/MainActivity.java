@@ -39,22 +39,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = this;
         initFields();
-        if (savedInstanceState != null && !savedInstanceState.isEmpty()) {
-
-            videoList = (VideoList) savedInstanceState.get(SAVE_INSTANCE);
-            setItemsToListVideo(videoList);
-
-//            bookList = (BookList) savedInstanceState.get(SAVE_INSTANCE);
-//            setItemsToListBook(bookList);
-        }
     }
 
-    public void getVideo(View view) {
-
-        progressBar.setVisibility(ProgressBar.VISIBLE);
+    public void getVideo() {
         recyclerViewVideo.setVisibility(ProgressBar.GONE);
-
-
         RetrofitService.getApi().getListVideo().enqueue(new Callback<VideoList>() {
             @Override
             public void onResponse(Call<VideoList> call, Response<VideoList> response) {
@@ -73,12 +61,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void getBook(View view) {
-
-        progressBar.setVisibility(ProgressBar.VISIBLE);
+    public void getBook() {
         recyclerViewBook.setVisibility(ProgressBar.GONE);
-
-
         RetrofitService.getApi().getListBook().enqueue(new Callback<BookList>() {
             @Override
             public void onResponse(Call<BookList> call, Response<BookList> response) {
@@ -120,6 +104,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+//        if (savedInstanceState != null && !savedInstanceState.isEmpty()) {
+
+            videoList = (VideoList) savedInstanceState.get(SAVE_INSTANCE);
+            setItemsToListVideo(videoList);
+
+//            bookList = (BookList) savedInstanceState.get(SAVE_INSTANCE);
+//            setItemsToListBook(bookList);
+//        }
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         if (videoList != null) {
             outState.putParcelable(SAVE_INSTANCE, videoList);
@@ -127,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
 //        if (bookList != null) {
 //            outState.putParcelable(SAVE_INSTANCE, bookList);
 //        }
+        super.onSaveInstanceState(outState);
+
     }
 
     private void hideProgressBar() {
@@ -135,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFields() {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        recyclerViewVideo = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerViewBook = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerViewVideo = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerViewBook = (RecyclerView) findViewById(R.id.recyclerView);
     }
 
     @Override
@@ -147,16 +146,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        progressBar.setVisibility(ProgressBar.VISIBLE);
         switch (item.getItemId()) {
             case R.id.refreshVideo:
 //                bookList = null;
-                getVideo(recyclerViewVideo);
+                getVideo();
                 return true;
             case R.id.refreshBook:
 //                videoList = null;
-                getBook(recyclerViewBook);
+                getBook();
                 return true;
         }
+        hideProgressBar();
         return super.onOptionsItemSelected(item);
     }
 }
