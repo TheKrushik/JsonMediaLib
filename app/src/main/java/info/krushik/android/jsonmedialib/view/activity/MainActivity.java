@@ -24,6 +24,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private static final String SAVE_INSTANCE = "instance";
+    private static String SAVE_LAYOUT;
     private Context context;
     private ProgressBar progressBar;
     private VideoAdapter videoAdapter;
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 setItemsToListVideo(response.body());
                 hideProgressBar();
             }
-
             @Override
             public void onFailure(Call<VideoList> call, Throwable t) {
                 if (videoList != null) {
@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 setItemsToListBook(response.body());
                 hideProgressBar();
             }
-
             @Override
             public void onFailure(Call<BookList> call, Throwable t) {
                 if (bookList != null) {
@@ -86,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
             recyclerViewVideo.setVisibility(View.VISIBLE);
         }
         videoAdapter = new VideoAdapter(currentVideo.getList());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
-        recyclerViewVideo.setLayoutManager(mLayoutManager);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerViewVideo.setLayoutManager(layoutManager);
         recyclerViewVideo.setItemAnimator(new DefaultItemAnimator());
         recyclerViewVideo.setAdapter(videoAdapter);
     }
@@ -97,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
             recyclerViewBook.setVisibility(View.VISIBLE);
         }
         bookAdapter = new BookAdapter(currentBook.getList());
-        RecyclerView.LayoutManager mLayoutManagerB = new LinearLayoutManager(context);
-        recyclerViewBook.setLayoutManager(mLayoutManagerB);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerViewBook.setLayoutManager(layoutManager);
         recyclerViewBook.setItemAnimator(new DefaultItemAnimator());
         recyclerViewBook.setAdapter(bookAdapter);
     }
@@ -106,26 +105,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-//        if (savedInstanceState != null && !savedInstanceState.isEmpty()) {
-
+        if (SAVE_LAYOUT.equals("videoList")) {
             videoList = (VideoList) savedInstanceState.get(SAVE_INSTANCE);
             setItemsToListVideo(videoList);
-
-//            bookList = (BookList) savedInstanceState.get(SAVE_INSTANCE);
-//            setItemsToListBook(bookList);
-//        }
+        }
+        if (SAVE_LAYOUT.equals("bookList")) {
+            bookList = (BookList) savedInstanceState.get(SAVE_INSTANCE);
+            setItemsToListBook(bookList);
+        }
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         if (videoList != null) {
             outState.putParcelable(SAVE_INSTANCE, videoList);
+            SAVE_LAYOUT = "videoList";
         }
-//        if (bookList != null) {
-//            outState.putParcelable(SAVE_INSTANCE, bookList);
-//        }
+        if (bookList != null) {
+            outState.putParcelable(SAVE_INSTANCE, bookList);
+            SAVE_LAYOUT = "bookList";
+        }
         super.onSaveInstanceState(outState);
-
     }
 
     private void hideProgressBar() {
@@ -149,11 +149,11 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setVisibility(ProgressBar.VISIBLE);
         switch (item.getItemId()) {
             case R.id.refreshVideo:
-//                bookList = null;
+                bookList = null;
                 getVideo();
                 return true;
             case R.id.refreshBook:
-//                videoList = null;
+                videoList = null;
                 getBook();
                 return true;
         }
