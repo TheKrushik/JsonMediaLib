@@ -1,10 +1,13 @@
 package info.krushik.android.jsonmedialib.model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 
-public class Video {
+public class Video implements Parcelable {
 
     @SerializedName("title")
     private String title;
@@ -72,4 +75,43 @@ public class Video {
         this.video = video;
     }
 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.title);
+        dest.writeString(this.picture);
+        dest.writeString(this.desc);
+        dest.writeString(this.length);
+        dest.writeString(this.dt);
+        dest.writeString(this.video);
+    }
+
+    public Video() {
+    }
+
+    protected Video(Parcel in) {
+        this.title = in.readString();
+        this.picture = in.readString();
+        this.desc = in.readString();
+        this.length = in.readString();
+        this.dt = in.readString();
+        this.video = in.readString();
+    }
+
+    public static final Creator<Video> CREATOR = new Creator<Video>() {
+        @Override
+        public Video createFromParcel(Parcel source) {
+            return new Video(source);
+        }
+
+        @Override
+        public Video[] newArray(int size) {
+            return new Video[size];
+        }
+    };
 }
